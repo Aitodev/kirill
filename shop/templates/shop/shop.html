@@ -340,9 +340,14 @@
 																<div class="add-to-links">
 																	<ul>
 																		<li>
+																			<form action="{% url 'cart:cart_add' p.id %}" method="POST">
+																			{% csrf_token %}
+                                                                    		{{ cart_product_form }}
+                                                                    		<input type="submit" value="Добавить в корзину">
 																			<a href="#" title="Add to cart">
 																				<i class="fa fa-shopping-cart"></i>
 																			</a>
+																			</form>
 																		</li>
 																		<li>
 																			<a href="{% url 'shop:wishlist' %}" title="Add to wishlist">

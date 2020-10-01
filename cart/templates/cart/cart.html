@@ -26,54 +26,34 @@
 											</tr>
 										</thead>
 										<tbody>
+										{% for item in cart %}
+                                        	{% with product=item.product %}
 											<tr>
 												<td class="product-thumbnail">
 													<a href="shopping-cart.html">
-														<img src="http://preview.hasthemes.com/vonia-preview/vonia/img/wishlist/1.jpg" alt="" />
+														<img src="{{ product.image.url }}" alt="" />
 													</a>
 												</td>
 												<td class="product-name">
-													<a href="shopping-cart.html">Vestibulum suscipit</a>
+													<a href="shopping-cart.html">{{ product.name }}</a>
 												</td>
 												<td class="product-price">
-													<span class="amount">£165.00</span>
+													<span class="amount">{{ product.price }}</span>
 												</td>
 												<td class="product-quantity">
 													<input type="number" value="1" />
 												</td>
 												<td class="product-subtotal">
-													£165.00
+													{{ product.price }}
 												</td>
 												<td class="product-remove">
-													<a href="shopping-cart.html">
-														<i class="fa fa-times"></i>
+													<a href="{% url 'cart:cart_remove' product.id %}">
+														remove
 													</a>
 												</td>
 											</tr>
-											<tr>
-												<td class="product-thumbnail">
-													<a href="shopping-cart.html">
-														<img src="http://preview.hasthemes.com/vonia-preview/vonia/img/wishlist/2.jpg" alt="" />
-													</a>
-												</td>
-												<td class="product-name">
-													<a href="shopping-cart.html">Vestibulum dictum magna</a>
-												</td>
-												<td class="product-price">
-													<span class="amount">£50.00</span>
-												</td>
-												<td class="product-quantity">
-													<input type="number" value="1" />
-												</td>
-												<td class="product-subtotal">
-													£50.00
-												</td>
-												<td class="product-remove">
-													<a href="shopping-cart.html">
-														<i class="fa fa-times"></i>
-													</a>
-												</td>
-											</tr>
+											{% endwith %}
+                                    	{% endfor %}
 										</tbody>
 									</table>
 								</div>
